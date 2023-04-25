@@ -34,3 +34,65 @@ void insertionSort(int arr[], int n) {
 The function above takes an array arr of length n as input and sorts it in ascending order using the insertion sort algorithm. The sorted part and the unsorted part are initially divided in the input array, and the function iterates over the unsorted part one element at a time, inserting it into the correct position in the sorted part by shifting all the elements greater than it one position to the right. The implementation uses a variable key to store the current element that needs to be inserted into the sorted part and a variable j to keep track of the index where it needs to be inserted. The function starts with i = 1 because the first element of the array is already in the sorted part. A while loop is used to shift all the elements greater than key to the right until the correct position for key is found, and key is then inserted into the correct position by setting arr[j + 1] = key.
 
 The program in this repository demonstrates the implementation of insertion sort in C.
+
+### Code:
+
+```
+// implementing insertion sort
+
+#include <stdio.h>
+
+void InsertionSort(int a[], int n);
+
+int main()
+{
+    int arr[5] = {27, 9, 16, 42, 87};
+    int i;
+
+    printf("Available array:\n");
+
+    for(i = 0; i < 5; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+
+    printf("\n\n");
+
+    // sorting the given array
+    InsertionSort(arr, 5);
+
+    printf("Sorted array (Insertion Sort):\n");
+
+    for(i = 0; i < 5; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+
+    return 0;
+}
+
+
+// insertion sort
+void InsertionSort(int a[], int n)
+{
+    int small_element;
+    int i, j;
+
+    for(i = 1; i < n; i++)
+    {
+        // storing the assumed small element in a variable called 'small'
+        small_element = a[i];
+
+        for(j = i - 1; j >= 0 && small_element < a[j]; j--)
+        {
+            a[j + 1] = a[j];
+        }
+        
+        a[j + 1] = small_element;
+    }
+}
+```
+
+### Output:
+
+![insertionSort.c output](https://github.com/Aditi-exe/C-Insertion-Sort/blob/main/insertionSort.png)
